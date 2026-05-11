@@ -103,9 +103,10 @@ a {
 }
 
 .logo img {
-    height: 162px; /* Increased by 20% from 135px */
+    height: 162px; /* Base height */
     width: auto;
     display: block;
+    transform: scale(1.44); /* Increased by another 20% */
 }
 
 .nav-links {
@@ -399,10 +400,12 @@ a {
 }
 
 .footer-logo-img {
-    height: 115px; /* Increased by 20% from 96px */
+    height: 140px; /* Increased base height */
     width: auto;
-    margin-bottom: 0.8rem;
+    margin-bottom: 1.5rem;
     display: block;
+    transform: scale(1.5); /* Scaled even further */
+    transform-origin: left center;
 }
 
 .brand-col p {
