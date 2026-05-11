@@ -12,11 +12,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Mobile Menu Toggle (Simplified) ---
     const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
     
     if(hamburger) {
         hamburger.addEventListener('click', () => {
-            // Mobile menu logic can be added here
             hamburger.classList.toggle('active');
+            if (navLinks) {
+                navLinks.classList.toggle('active');
+            }
         });
     }
 
