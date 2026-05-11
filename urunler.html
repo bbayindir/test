@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ürünler | Obiado's Olea</title>
+    <meta name="description" content="Obiado's Olea premium zeytinyağı ürünleri. Doğal, soğuk sıkım ve katkısız Ege lezzetleri.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .page-header {
+            padding: 150px 0 80px;
+            text-align: center;
+            background-color: var(--bg-light);
+        }
+        .page-title {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        /* Filters */
+        .filters-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
+            margin-bottom: 3rem;
+        }
+        .filter-btn {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            padding: 0.6rem 1.5rem;
+            border-radius: 30px;
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            color: var(--text-main);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2.5rem;
+            padding: 2rem 0 4rem;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+            transition: all 0.4s ease;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        .product-img-wrapper {
+            position: relative;
+            height: 320px;
+            overflow: hidden;
+            background-color: #f8f9fa;
+        }
+        .product-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+        .product-card:hover .product-img {
+            transform: scale(1.05);
+        }
+        
+        .product-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        .product-card:hover .product-overlay {
+            opacity: 1;
+        }
+        .btn-view {
+            background: white;
+            color: var(--primary-dark);
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            font-weight: 600;
+            transform: translateY(20px);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .product-card:hover .btn-view {
+            transform: translateY(0);
+        }
+        .btn-view:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .product-details {
+            padding: 2rem;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        .product-category {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+        .product-title {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--primary-dark);
+        }
+        .product-desc {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+        .product-size {
+            font-weight: 600;
+            color: var(--text-main);
+            font-size: 0.9rem;
+            padding: 0.4rem 0;
+            border-top: 1px solid #eee;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <header class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="logo">Obiado's Olea</a>
+            <nav class="nav-links">
+                <a href="index.html">Anasayfa</a>
+                <a href="hikayemiz.html">Hikayemiz</a>
+                <a href="urunler.html" class="active">Ürünler</a>
+                <a href="iletisim.html">İletişim</a>
+            </nav>
+            <div class="nav-actions">
+                <div class="hamburger">
+                    <div class="line1"></div>
+                    <div class="line2"></div>
+                    <div class="line3"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-header fade-in-up">
+            <div class="container">
+                <h1 class="page-title">Koleksiyonumuz</h1>
+                <p class="lead-text">Doğanın saflığını sofralarınıza taşıyan, özenle hazırlanmış ürün portföyümüz.</p>
+                
+                <div class="filters-container">
+                    <button class="filter-btn active" data-filter="all">Tümü</button>
+                    <button class="filter-btn" data-filter="zeytinyagi">Zeytinyağları</button>
+                    <button class="filter-btn" data-filter="gurme">Gurme Lezzetler</button>
+                    <button class="filter-btn" data-filter="zeytin">Sofralık Zeytinler</button>
+                    <button class="filter-btn" data-filter="kozmetik">Doğal Kozmetik</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section" style="padding-top: 0;">
+            <div class="container">
+                <div class="products-grid">
+                    <!-- Product 1 -->
+                    <div class="product-card filter-item zeytinyagi fade-in-up">
+                        <div class="product-img-wrapper">
+                            <img src="https://obiadosolea.com.tr/wp-content/uploads/2025/09/obiados-olea-filtresiz-500ml-2-700x700.jpg" alt="Filtresiz İlk Hasat" class="product-img">
+                            <div class="product-overlay">
+                                <a href="iletisim.html" class="btn-view">Sipariş Ver</a>
+                            </div>
+                        </div>
+                        <div class="product-details">
+                            <span class="product-category">Zeytinyağı</span>
+                            <h3 class="product-title">Filtresiz İlk Hasat</h3>
+                            <p class="product-desc">Erken dönemde hasat edilip filtre edilmeden şişelenen, meyvemsi aromasıyla öne çıkan özel serimiz.</p>
+                            <span class="product-size">500ml / 1L</span>
+                        </div>
+                    </div>
+
+                    <!-- Product 2 -->
+                    <div class="product-card filter-item zeytinyagi fade-in-up">
+                        <div class="product-img-wrapper">
+                            <img src="https://obiadosolea.com.tr/wp-content/uploads/2025/09/obiados-olea-erken-hasat-naturel-sizma-500ml-700x700.jpg" alt="Erken Hasat Natürel Sızma" class="product-img">
+                            <div class="product-overlay">
+                                <a href="iletisim.html" class="btn-view">Sipariş Ver</a>
+                            </div>
+                        </div>
+                        <div class="product-details">
+                            <span class="product-category">Zeytinyağı</span>
+                            <h3 class="product-title">Erken Hasat Natürel Sızma</h3>
+                            <p class="product-desc">Soğuk sıkım yöntemiyle elde edilen, düşük asit oranına sahip mükemmel lezzet.</p>
+                            <span class="product-size">1L / 2L / 5L</span>
+                        </div>
+                    </div>
+
+                    <!-- Product 3 -->
+                    <div class="product-card filter-item gurme fade-in-up">
+                        <div class="product-img-wrapper">
+                            <img src="https://obiadosolea.com.tr/wp-content/uploads/2025/09/obiados-olea-erken-hasat-naturel-sizma-2L-700x700.jpg" alt="Premium Hediye Kutusu" class="product-img">
+                            <div class="product-overlay">
+                                <a href="iletisim.html" class="btn-view">Sipariş Ver</a>
+                            </div>
+                        </div>
+                        <div class="product-details">
+                            <span class="product-category">Gurme Hediye</span>
+                            <h3 class="product-title">Premium Hediye Kutusu</h3>
+                            <p class="product-desc">Özel ahşap tasarım kutu içerisinde, 500ml'lik iki farklı hasat zeytinyağımızdan oluşan lüks set.</p>
+                            <span class="product-size">Özel Set</span>
+                        </div>
+                    </div>
+
+                    <!-- Product 4 -->
+                    <div class="product-card filter-item zeytinyagi fade-in-up">
+                        <div class="product-img-wrapper">
+                            <img src="https://obiadosolea.com.tr/wp-content/uploads/2025/09/obiados-olea-erken-hasat-naturel-sizma-5L-700x700.jpg" alt="Soğuk Sıkım Klasik" class="product-img">
+                            <div class="product-overlay">
+                                <a href="iletisim.html" class="btn-view">Sipariş Ver</a>
+                            </div>
+                        </div>
+                        <div class="product-details">
+                            <span class="product-category">Zeytinyağı</span>
+                            <h3 class="product-title">Soğuk Sıkım Klasik</h3>
+                            <p class="product-desc">Günlük kullanım için ideal, yumuşak içimli ve dengeli aromaya sahip klasik zeytinyağımız.</p>
+                            <span class="product-size">2L / 5L</span>
+                        </div>
+                    </div>
+
+                    <!-- Product 5 -->
+                    <div class="product-card filter-item zeytinyagi fade-in-up">
+                        <div class="product-img-wrapper">
+                            <img src="https://obiadosolea.com.tr/wp-content/uploads/2025/09/obiados-olea-filtresiz-ilk-hasat-zeytinyagi-1-700x700.jpg" alt="Organik Sızma" class="product-img">
+                            <div class="product-overlay">
+                                <a href="iletisim.html" class="btn-view">Sipariş Ver</a>
+                            </div>
+                        </div>
+                        <div class="product-details">
+                            <span class="product-category">Zeytinyağı</span>
+                            <h3 class="product-title">Organik Natürel Sızma</h3>
+                            <p class="product-desc">Sertifikalı organik tarım yöntemleriyle yetiştirilen zeytinlerden elde edilen, tamamen saf zeytinyağı.</p>
+                            <span class="product-size">500ml / 1L</span>
+                        </div>
+                    </div>
+
+                    <!-- Product 6 -->
+                    <div class="product-card filter-item gurme fade-in-up">
+                        <div class="product-img-wrapper">
+                            <img src="https://obiadosolea.com.tr/wp-content/uploads/2025/09/obiados-olea-erken-hasat-naturel-sizma-175ml-700x700.jpg" alt="Limon Çeşnili" class="product-img">
+                            <div class="product-overlay">
+                                <a href="iletisim.html" class="btn-view">Sipariş Ver</a>
+                            </div>
+                        </div>
+                        <div class="product-details">
+                            <span class="product-category">Gurme Lezzetler</span>
+                            <h3 class="product-title">Limon Çeşnili Zeytinyağı</h3>
+                            <p class="product-desc">Taze limon kabuklarıyla birlikte sıkılan zeytinlerden elde edilen, salatalar için ferahlatıcı lezzet.</p>
+                            <span class="product-size">250ml</span>
+                        </div>
+                    </div>
+
+                    <!-- Product 7 -->
+                    <div class="product-card filter-item gurme fade-in-up">
+                        <div class="product-img-wrapper">
+                            <img src="https://obiadosolea.com.tr/wp-content/uploads/2025/09/obiados-olea-erken-hasat-naturel-sizma-500ml-700x700.jpg" alt="Trüf Aromalı" class="product-img">
+                            <div class="product-overlay">
+                                <a href="iletisim.html" class="btn-view">Sipariş Ver</a>
+                            </div>
+                        </div>
+                        <div class="product-details">
+                            <span class="product-category">Gurme Lezzetler</span>
+                            <h3 class="product-title">Trüf Mantarı Aromalı</h3>
+                            <p class="product-desc">Siyah trüf mantarı özüyle zenginleştirilmiş, makarnalar ve pizzalar için gurme dokunuş.</p>
+                            <span class="product-size">250ml</span>
+                        </div>
+                    </div>
+
+                    <!-- Product 8 -->
+                    <div class="product-card filter-item gurme fade-in-up">
+                        <div class="product-img-wrapper">
+                            <img src="https://obiadosolea.com.tr/wp-content/uploads/2025/09/obiados-olea-erken-hasat-naturel-sizma-5L-700x700.jpg" alt="Sarımsaklı" class="product-img">
+                            <div class="product-overlay">
+                                <a href="iletisim.html" class="btn-view">Sipariş Ver</a>
+                            </div>
+                        </div>
+                        <div class="product-details">
+                            <span class="product-category">Gurme Lezzetler</span>
+                            <h3 class="product-title">Sarımsaklı Zeytinyağı</h3>
+                            <p class="product-desc">Marinasyonlar ve soslar için ideal, doğal sarımsak aromasıyla demlenmiş zeytinyağı.</p>
+                            <span class="product-size">250ml</span>
+                        </div>
+                    </div>
+
+                    <!-- Product 9 -->
+                    <div class="product-card filter-item zeytin fade-in-up">
+                        <div class="product-img-wrapper">
+                            <img src="https://obiadosolea.com.tr/wp-content/uploads/2025/11/obiados-olea-assos-zeytinyaglari-7.jpg" alt="Kırma Yeşil Zeytin" class="product-img">
+                            <div class="product-overlay">
+                                <a href="iletisim.html" class="btn-view">Sipariş Ver</a>
+                            </div>
+                        </div>
+                        <div class="product-details">
+                            <span class="product-category">Sofralık Zeytinler</span>
+                            <h3 class="product-title">Kırma Yeşil Zeytin</h3>
+                            <p class="product-desc">Geleneksel yöntemlerle kırılıp doğal suda tatlandırılan, hafif ekşi ve taze yeşil zeytin.</p>
+                            <span class="product-size">1000g</span>
+                        </div>
+                    </div>
+
+                    <!-- Product 10 -->
+                    <div class="product-card filter-item zeytin fade-in-up">
+                        <div class="product-img-wrapper">
+                            <img src="https://obiadosolea.com.tr/wp-content/uploads/2025/09/obiados-olea-filtresiz-500ml-2-700x700.jpg" alt="Sele Siyah Zeytin" class="product-img">
+                            <div class="product-overlay">
+                                <a href="iletisim.html" class="btn-view">Sipariş Ver</a>
+                            </div>
+                        </div>
+                        <div class="product-details">
+                            <span class="product-category">Sofralık Zeytinler</span>
+                            <h3 class="product-title">Doğal Sele Siyah Zeytin</h3>
+                            <p class="product-desc">Sadece tuz kullanılarak selede olgunlaştırılan, etli ve yoğun lezzetli siyah zeytin.</p>
+                            <span class="product-size">800g</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Product 11 -->
+                    <div class="product-card filter-item zeytin fade-in-up">
+                        <div class="product-img-wrapper">
+                            <img src="https://obiadosolea.com.tr/wp-content/uploads/2025/09/obiados-olea-erken-hasat-naturel-sizma-500ml-700x700.jpg" alt="Çizik Yeşil Zeytin" class="product-img">
+                            <div class="product-overlay">
+                                <a href="iletisim.html" class="btn-view">Sipariş Ver</a>
+                            </div>
+                        </div>
+                        <div class="product-details">
+                            <span class="product-category">Sofralık Zeytinler</span>
+                            <h3 class="product-title">Çizik Yeşil Zeytin</h3>
+                            <p class="product-desc">Özenle çizilerek limon ve zeytinyağı ile marine edilmiş ege usulü yeşil zeytin.</p>
+                            <span class="product-size">1000g</span>
+                        </div>
+                    </div>
+
+                    <!-- Product 12 -->
+                    <div class="product-card filter-item kozmetik fade-in-up">
+                        <div class="product-img-wrapper">
+                            <img src="https://obiadosolea.com.tr/wp-content/uploads/2025/11/obiados-olea-assos-zeytinyaglari-7.jpg" alt="Doğal Sabun" class="product-img">
+                            <div class="product-overlay">
+                                <a href="iletisim.html" class="btn-view">Sipariş Ver</a>
+                            </div>
+                        </div>
+                        <div class="product-details">
+                            <span class="product-category">Doğal Kozmetik</span>
+                            <h3 class="product-title">Geleneksel Zeytinyağı Sabunu</h3>
+                            <p class="product-desc">Saf zeytinyağımızdan soğuk proses ile üretilen, cildi nemlendiren doğal el yapımı sabun.</p>
+                            <span class="product-size">3'lü Paket</span>
+                        </div>
+                    </div>
+
+                    <!-- Product 13 -->
+                    <div class="product-card filter-item gurme fade-in-up">
+                        <div class="product-img-wrapper">
+                            <img src="https://obiadosolea.com.tr/wp-content/uploads/2025/09/obiados-olea-erken-hasat-naturel-sizma-175ml-700x700.jpg" alt="Zeytin Ağacı Sunum" class="product-img">
+                            <div class="product-overlay">
+                                <a href="iletisim.html" class="btn-view">Sipariş Ver</a>
+                            </div>
+                        </div>
+                        <div class="product-details">
+                            <span class="product-category">Aksesuar</span>
+                            <h3 class="product-title">Zeytin Ağacı Sunum Tahtası</h3>
+                            <p class="product-desc">Ömrünü tamamlamış zeytin ağaçlarından el işçiliğiyle üretilen eşsiz peynir ve sunum tahtası.</p>
+                            <span class="product-size">Tek Boy</span>
+                        </div>
+                    </div>
+
+                </div>
+                
+                <div class="text-center" style="text-align: center; margin-top: 4rem; padding-top: 3rem; border-top: 1px solid var(--border-color);">
+                    <h3 style="font-size: 1.8rem; margin-bottom: 1rem; font-family: var(--font-heading);">Toptan Alım ve Kurumsal Siparişler</h3>
+                    <p style="color: var(--text-light); margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">Restoranlar, oteller ve kurumsal hediye çözümleri için özel fiyatlandırmalarımız hakkında detaylı bilgi almak için iletişime geçin.</p>
+                    <a href="iletisim.html" class="btn-primary">İletişime Geçin</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div class="footer-col brand-col">
+                <h3 class="footer-logo">Obiado's Olea</h3>
+                <p>Assos'un bereketli topraklarından süzülen rafine bir yaşam biçimi.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Kurumsal</h4>
+                <ul>
+                    <li><a href="index.html">Anasayfa</a></li>
+                    <li><a href="hikayemiz.html">Hikayemiz</a></li>
+                    <li><a href="urunler.html">Ürünler</a></li>
+                    <li><a href="iletisim.html">İletişim</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Obiado's Olea. Tüm Hakları Saklıdır.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Simple filter logic for products
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const productCards = document.querySelectorAll('.product-card');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    // Add active class to clicked button
+                    btn.classList.add('active');
+
+                    const filterValue = btn.getAttribute('data-filter');
+
+                    productCards.forEach(card => {
+                        if(filterValue === 'all') {
+                            card.style.display = 'flex';
+                        } else {
+                            if(card.classList.contains(filterValue)) {
+                                card.style.display = 'flex';
+                            } else {
+                                card.style.display = 'none';
+                            }
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

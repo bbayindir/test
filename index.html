@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anasayfa | Obiado's Olea</title>
+    <meta name="description" content="Assos’un eşsiz doğasından sofralarınıza uzanan premium zeytinyağı serüveni. Obiado's Olea ile doğallığı keşfedin.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+        .feature-card {
+            text-align: center;
+            padding: 2rem;
+            background: var(--bg-light);
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: var(--transition-smooth);
+        }
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <header class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="logo">Obiado's Olea</a>
+            <nav class="nav-links">
+                <a href="index.html" class="active">Anasayfa</a>
+                <a href="hikayemiz.html">Hikayemiz</a>
+                <a href="urunler.html">Ürünler</a>
+                <a href="iletisim.html">İletişim</a>
+            </nav>
+            <div class="nav-actions">
+                <div class="hamburger">
+                    <div class="line1"></div>
+                    <div class="line2"></div>
+                    <div class="line3"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-image-container">
+            <img src="assets/home_hero.png" alt="Obiado's Olea Mediterranean Setting" class="hero-image">
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="hero-content fade-in-up">
+            <h1 class="hero-title">Doğanın En Saf Hali</h1>
+            <p class="hero-subtitle">Assos'tan Sofralarınıza Premium Zeytinyağı</p>
+            <a href="urunler.html" class="btn-primary" style="margin-top: 2rem;">Ürünleri Keşfedin</a>
+        </div>
+    </section>
+
+    <main class="story-main">
+        <!-- Intro Section -->
+        <section class="story-intro content-section fade-in-up">
+            <div class="container">
+                <p class="lead-text">
+                    Kuzey Ege'nin benzersiz ikliminde yetişen zeytinlerimizi özenle hasat ediyor, hiçbir kimyasal işleme maruz bırakmadan en saf haliyle şişeliyoruz. Obiado's Olea, sadece bir zeytinyağı değil, Assos'un bereketli topraklarından süzülen rafine bir yaşam biçimidir.
+                </p>
+            </div>
+        </section>
+
+        <!-- Features -->
+        <section class="content-section bg-light">
+            <div class="container">
+                <h2 class="section-title fade-in-up">Neden Obiado's Olea?</h2>
+                <div class="features-grid">
+                    <div class="feature-card fade-in-up" style="transition-delay: 0.1s">
+                        <i class="fas fa-leaf feature-icon"></i>
+                        <h3>%100 Doğal</h3>
+                        <p>Hiçbir katkı maddesi kullanmadan, doğanın bize sunduğu saflıkla üretim yapıyoruz.</p>
+                    </div>
+                    <div class="feature-card fade-in-up" style="transition-delay: 0.2s">
+                        <i class="fas fa-tint feature-icon"></i>
+                        <h3>Soğuk Sıkım</h3>
+                        <p>Zeytinlerimizin besin değerlerini ve aromasını korumak için sadece soğuk sıkım yöntemi uyguluyoruz.</p>
+                    </div>
+                    <div class="feature-card fade-in-up" style="transition-delay: 0.3s">
+                        <i class="fas fa-award feature-icon"></i>
+                        <h3>Premium Kalite</h3>
+                        <p>Erken hasat ve özenli filtreleme süreçleriyle en düşük asit oranını ve mükemmel tadı garanti ediyoruz.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA to Story -->
+        <section class="story-chapter content-section">
+            <div class="container chapter-grid text-center">
+                <div class="chapter-text full-width fade-in-up">
+                    <h2>Bizim Hikayemiz</h2>
+                    <p>Obiado's Olea'nın hikayesi, kurucumuzun ailesiyle 2018'de Assos'a taşınmasıyla başladı. Doğaya duyduğumuz sevgi, kendi bahçemizde özenle ürettiğimiz zeytinyağını sizlerle paylaşma hayaline dönüştü.</p>
+                    <a href="hikayemiz.html" class="btn-primary" style="background-color: transparent; color: var(--primary-color); border: 2px solid var(--primary-color);">Hikayemizi Okuyun</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div class="footer-col brand-col">
+                <h3 class="footer-logo">Obiado's Olea</h3>
+                <p>Assos'un bereketli topraklarından süzülen rafine bir yaşam biçimi.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Kurumsal</h4>
+                <ul>
+                    <li><a href="index.html">Anasayfa</a></li>
+                    <li><a href="hikayemiz.html">Hikayemiz</a></li>
+                    <li><a href="urunler.html">Ürünler</a></li>
+                    <li><a href="iletisim.html">İletişim</a></li>
+                </ul>
+            </div>
+
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Obiado's Olea. Tüm Hakları Saklıdır.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
