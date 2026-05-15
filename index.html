@@ -61,7 +61,14 @@
 </head>
 <body>
     <!-- Navbar -->
-    <header class="navbar">
+    <header class="navbar" style="overflow: hidden;">
+        <!-- Video Background for Navbar -->
+        <video autoplay muted loop playsinline style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2;">
+            <source src="assets/vide01.MOV" type="video/mp4">
+        </video>
+        <!-- Hafif karartma eklendi ki yazılar ve logo tamamen kaybolmasın (isteğe göre silinebilir) -->
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.25); z-index: -1;"></div>
+        
         <div class="navbar-container">
             <a href="index.html" class="logo"><img src="assets/logo.png" alt="Çilli Natural Logo"></a>
             <nav class="nav-links">
@@ -81,7 +88,7 @@
     </header>
 
     <!-- Page Header -->
-    <section class="page-header fade-in-up" style="background-color: transparent; padding-top: 250px; text-align: center; padding-bottom: 4rem;">
+    <section class="page-header fade-in-up" style="background-color: transparent; padding-top: 500px; text-align: center; padding-bottom: 4rem;">
         <div class="container">
             <h1 class="page-title" style="color: var(--primary-color); font-family: var(--font-heading); font-style: italic; font-size: 3.5rem;">Doğadan Aldığını<br>Doğaya Geri Veren</h1>
             <p class="lead-text" style="max-width: 800px; margin: 2rem auto; color: var(--text-main); font-size: 1.1rem; line-height: 1.8;">
@@ -96,7 +103,7 @@
         <section class="content-section">
             <div class="container chapter-grid">
                 <div class="chapter-image-wrapper fade-in-right">
-                    <div class="placeholder-img"></div>
+                    <img src="assets/1.png" alt="Köklerimizden Geleceğimize" style="width: 100%; aspect-ratio: 1/1; object-fit: cover; display: block;">
                 </div>
                 <div class="chapter-text montserrat-text fade-in-left">
                     <h2 style="color: var(--secondary-color);">Köklerimizden<br>Geleceğimize</h2>
@@ -109,7 +116,7 @@
         <section class="content-section">
             <div class="container chapter-grid reverse">
                 <div class="chapter-image-wrapper fade-in-left">
-                    <div class="placeholder-img"></div>
+                    <img src="assets/2.png" alt="Doğadan Aldığını Doğaya Geri Veren" style="width: 100%; aspect-ratio: 1/1; object-fit: cover; display: block;">
                 </div>
                 <div class="chapter-text montserrat-text fade-in-right">
                     <h2 style="color: var(--primary-color);">Doğadan Aldığını<br>Doğaya Geri Veren</h2>
@@ -122,12 +129,17 @@
         <section class="content-section">
             <div class="container chapter-grid">
                 <div class="chapter-image-wrapper fade-in-right">
-                    <div class="placeholder-img"></div>
+                    <img src="assets/3.png" alt="Neyi Hedefliyoruz?" style="width: 100%; aspect-ratio: 1/1; object-fit: cover; display: block;">
                 </div>
                 <div class="chapter-text montserrat-text fade-in-left">
                     <h2 style="color: var(--secondary-color);">Neyi Hedefliyoruz?</h2>
                     <p style="font-weight: 400; margin-bottom: 1.5rem;">Çilli Natural olarak biz, yalnızca zeytinyağı üreten bir marka olmanın ötesinde, doğayla kurulan bağı günlük yaşama taşıyan bir yaklaşım sunuyoruz. Zeytinyağlı dudak nemlendiricisi, zeytin derisinden defter gibi ürünler bu anlayışın bir uzantısı. Doğadan gelen değerin farklı formlarda yeniden hayat bulmasını istiyoruz.</p>
                     <p style="font-weight: 400;">Amacımız, doğayı sadece bir kaynak olarak görmek yerine onunla sürdürülebilir bir ilişki kurmak. Bu ürünler, "doğadan al, doğaya iyi bak" fikrini somutlaştırarak günlük yaşamın içine taşıyor ve kullanıcıya bir üründen çok bir duruşun parçası olma deneyimi sunuyor.</p>
+                </div>
+                
+                <!-- Yatay Görsel (Chapter Grid İçi) -->
+                <div class="fade-in-up" style="grid-column: 1 / -1; margin-top: 3rem;">
+                    <img src="assets/index-sample-image.jpeg" alt="Çilli Natural" style="width: 100%; aspect-ratio: 21/9; object-fit: cover; display: block;">
                 </div>
             </div>
         </section>

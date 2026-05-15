@@ -81,62 +81,82 @@ a {
     top: 0;
     width: 100%;
     z-index: 1000;
-    background-color: rgba(250, 249, 246, 0.95);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
     transition: var(--transition-smooth);
 }
 
 .navbar.scrolled {
-    padding: 0.5rem 0;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    padding: 0;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 .navbar-container {
+    position: relative;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    max-width: 1400px;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start; /* Keeps logo at the top */
+    gap: 4.5rem;
+    max-width: 1600px;
     margin: 0 auto;
-    padding: 0.5rem 2rem;
-    transition: var(--transition-smooth);
+    padding: 2rem 4rem 10rem 4rem;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .navbar.scrolled .navbar-container {
-    padding: 0.2rem 2rem;
+    padding: 1.5rem 4rem;
+    align-items: center; /* Centers logo vertically on scroll */
 }
 
 .logo {
     display: flex;
     align-items: center;
-    width: 100%;
-    justify-content: center;
-    margin-bottom: 0.2rem;
+    width: auto;
+    margin-bottom: 0;
 }
 
 .logo img {
-    height: 162px;
-    /* Base height */
+    height: 120px;
     width: auto;
     display: block;
-    transform: scale(1.44);
-    /* Increased by another 20% */
+    transition: height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.navbar.scrolled .logo img {
+    height: 65px; /* Shrinks smoothly */
 }
 
 .nav-links {
+    position: absolute;
+    left: 50%;
+    bottom: 2rem; /* Places it right above the page-header */
     display: flex;
-    gap: 2.5rem;
-    margin-right: 2rem;
+    gap: 4rem;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(8px);
+    padding: 0.8rem 4rem;
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    margin: 0;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateX(-50%); /* Centers it horizontally */
+}
+
+.navbar.scrolled .nav-links {
+    bottom: 50%;
+    transform: translate(-50%, 50%); /* Centers it both horizontally and vertically on scroll */
 }
 
 .nav-links a {
     font-size: 0.95rem;
     font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
     position: relative;
-    color: var(--text-main);
+    color: #ffffff;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.6); /* Slightly softened shadow since we have a background now */
+    transition: color 0.3s ease;
 }
 
 .nav-links a::after {
@@ -422,13 +442,11 @@ a {
 }
 
 .footer-logo-img {
-    height: 140px;
-    /* Increased base height */
+    height: 162px;
     width: auto;
     margin-bottom: 1.5rem;
     display: block;
-    transform: scale(1.5);
-    /* Scaled even further */
+    transform: scale(0.9);
     transform-origin: left center;
 }
 

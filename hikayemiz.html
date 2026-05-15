@@ -18,7 +18,14 @@
 
 <body>
     <!-- Navbar -->
-    <header class="navbar">
+    <header class="navbar" style="overflow: hidden;">
+        <!-- Video Background for Navbar -->
+        <video autoplay muted loop playsinline style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2;">
+            <source src="assets/vide01.MOV" type="video/mp4">
+        </video>
+        <!-- Hafif karartma eklendi ki yazılar ve logo tamamen kaybolmasın (isteğe göre silinebilir) -->
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.25); z-index: -1;"></div>
+        
         <div class="navbar-container">
             <a href="index.html" class="logo"><img src="assets/logo.png" alt="Çilli Natural Logo"></a>
             <nav class="nav-links">
@@ -39,7 +46,7 @@
 
     <!-- Page Header (Contact Style) -->
     <section class="page-header fade-in-up"
-        style="background-color: var(--bg-light); padding: 250px 0 60px; text-align: center;">
+        style="background-color: var(--bg-light); padding: 500px 0 60px; text-align: center;">
         <div class="container">
             <h1 class="page-title"
                 style="color: var(--primary-color); font-family: var(--font-heading); font-style: italic; font-size: 2.8rem;">

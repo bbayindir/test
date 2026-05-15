@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         .page-header {
-            padding: 250px 0 80px;
+            padding: 500px 0 80px;
             text-align: center;
             background-color: var(--bg-light);
         }
@@ -106,7 +106,14 @@
 </head>
 <body>
     <!-- Navbar -->
-    <header class="navbar">
+    <header class="navbar" style="overflow: hidden;">
+        <!-- Video Background for Navbar -->
+        <video autoplay muted loop playsinline style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2;">
+            <source src="assets/vide01.MOV" type="video/mp4">
+        </video>
+        <!-- Hafif karartma eklendi ki yazılar ve logo tamamen kaybolmasın (isteğe göre silinebilir) -->
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.25); z-index: -1;"></div>
+        
         <div class="navbar-container">
             <a href="index.html" class="logo"><img src="assets/logo.png" alt="Çilli Natural Logo"></a>
             <nav class="nav-links">
