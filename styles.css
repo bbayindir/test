@@ -94,7 +94,8 @@ a {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    align-items: flex-start; /* Keeps logo at the top */
+    align-items: flex-start;
+    /* Keeps logo at the top */
     gap: 4.5rem;
     max-width: 1600px;
     margin: 0 auto;
@@ -104,7 +105,8 @@ a {
 
 .navbar.scrolled .navbar-container {
     padding: 1.5rem 4rem;
-    align-items: center; /* Centers logo vertically on scroll */
+    align-items: center;
+    /* Centers logo vertically on scroll */
 }
 
 .logo {
@@ -122,13 +124,15 @@ a {
 }
 
 .navbar.scrolled .logo img {
-    height: 65px; /* Shrinks smoothly */
+    height: 65px;
+    /* Shrinks smoothly */
 }
 
 .nav-links {
     position: absolute;
     left: 50%;
-    bottom: 2rem; /* Places it right above the page-header */
+    bottom: 2rem;
+    /* Places it right above the page-header */
     display: flex;
     gap: 4rem;
     align-items: center;
@@ -140,12 +144,14 @@ a {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     margin: 0;
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    transform: translateX(-50%); /* Centers it horizontally */
+    transform: translateX(-50%);
+    /* Centers it horizontally */
 }
 
 .navbar.scrolled .nav-links {
     bottom: 50%;
-    transform: translate(-50%, 50%); /* Centers it both horizontally and vertically on scroll */
+    transform: translate(-50%, 50%);
+    /* Centers it both horizontally and vertically on scroll */
 }
 
 .nav-links a {
@@ -155,7 +161,8 @@ a {
     letter-spacing: 2px;
     position: relative;
     color: #ffffff;
-    text-shadow: 0 2px 8px rgba(0,0,0,0.6); /* Slightly softened shadow since we have a background now */
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+    /* Slightly softened shadow since we have a background now */
     transition: color 0.3s ease;
 }
 
@@ -209,11 +216,13 @@ a {
 }
 
 .hamburger div {
-    width: 25px;
-    height: 2px;
-    background-color: var(--text-main);
-    margin: 5px;
+    width: 30px;
+    height: 3px;
+    background-color: #ffffff;
+    margin: 6px 0;
     transition: all 0.3s ease;
+    border-radius: 4px;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.8), 0 0 15px rgba(255, 255, 255, 0.5); /* Parlak ve ışıklı (glowing) efekt */
 }
 
 /* Hero Section */
@@ -552,27 +561,57 @@ a {
 }
 
 @media (max-width: 768px) {
+    .navbar-container {
+        padding: 1rem 1rem 1.5rem 1rem; /* Much smaller padding for mobile */
+    }
+
+    .navbar.scrolled .navbar-container {
+        padding: 0.8rem 1rem;
+    }
+
+    .logo img {
+        height: 60px; /* Smaller logo for mobile to reduce header height */
+    }
+
     .nav-links {
         display: flex;
         flex-direction: column;
         position: absolute;
         top: 100%;
         left: 0;
+        bottom: auto; /* Override desktop bottom */
         width: 100%;
-        background-color: var(--bg-color);
+        background-color: var(--bg-light); /* Solid cream background */
+        backdrop-filter: none; /* Remove blur */
         padding: 2rem;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
-        transform: translateY(-150%);
-        opacity: 0;
-        visibility: hidden;
+        gap: 1.5rem; /* Tighter gap for mobile */
+        border-radius: 0; /* Remove pill shape */
+        border: none; /* Remove white border */
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        transform: translateY(-150%) !important; /* Override desktop translateX */
+        opacity: 0 !important;
+        visibility: hidden !important;
         transition: var(--transition-smooth);
         z-index: 999;
     }
 
+    .nav-links a {
+        color: var(--text-main); /* Dark text for readable mobile menu */
+        text-shadow: none; /* Remove desktop shadow */
+        font-size: 1.2rem;
+        font-weight: 500;
+        text-align: center;
+    }
+
     .nav-links.active {
-        transform: translateY(0);
-        opacity: 1;
-        visibility: visible;
+        transform: translateY(0) !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+
+    .navbar.scrolled .nav-links {
+        bottom: auto;
+        transform: translateY(-150%) !important; /* Ensure it stays hidden if scrolled */
     }
 
     .hamburger {

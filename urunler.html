@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="tr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +9,9 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         .page-header {
@@ -16,11 +19,12 @@
             text-align: center;
             background-color: var(--bg-light);
         }
+
         .page-title {
             font-size: 3.5rem;
             margin-bottom: 1rem;
         }
-        
+
         /* Filters */
         .filters-container {
             display: flex;
@@ -30,6 +34,7 @@
             margin-top: 2rem;
             margin-bottom: 3rem;
         }
+
         .filter-btn {
             background: transparent;
             border: 1px solid var(--border-color);
@@ -41,7 +46,9 @@
             cursor: pointer;
             transition: all 0.3s ease;
         }
-        .filter-btn:hover, .filter-btn.active {
+
+        .filter-btn:hover,
+        .filter-btn.active {
             background: var(--primary-color);
             color: white;
             border-color: var(--primary-color);
@@ -52,6 +59,7 @@
             position: relative;
             display: inline-block;
         }
+
         .filter-dropdown-content {
             visibility: hidden;
             opacity: 0;
@@ -61,7 +69,7 @@
             transform: translateX(-50%) translateY(10px);
             background-color: white;
             min-width: 160px;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
             border-radius: 16px;
             padding: 0.8rem;
             margin-top: 0.5rem;
@@ -71,11 +79,13 @@
             flex-direction: column;
             gap: 0.4rem;
         }
+
         .filter-dropdown:hover .filter-dropdown-content {
             visibility: visible;
             opacity: 1;
             transform: translateX(-50%) translateY(0);
         }
+
         .filter-dropdown-content::after {
             content: '';
             position: absolute;
@@ -86,6 +96,7 @@
             border-style: solid;
             border-color: transparent transparent white transparent;
         }
+
         .filter-dropdown-content .filter-btn {
             border: 1px solid transparent;
             border-radius: 8px;
@@ -101,51 +112,60 @@
             gap: 2.5rem;
             padding: 2rem 0 4rem;
         }
-        
+
         .product-card {
             background: white;
             border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
             transition: all 0.4s ease;
             position: relative;
             display: flex;
             flex-direction: column;
             height: 100%;
         }
+
         .product-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
         }
+
         .product-img-wrapper {
             position: relative;
             height: 320px;
             overflow: hidden;
             background-color: transparent;
         }
+
         .product-img {
             width: 100%;
             height: 100%;
             object-fit: contain;
             transition: transform 0.8s ease;
         }
+
         .product-card:hover .product-img {
             transform: scale(1.05);
         }
-        
+
         .product-overlay {
             position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0,0,0,0.2);
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.2);
             display: flex;
             align-items: center;
             justify-content: center;
             opacity: 0;
             transition: opacity 0.4s ease;
         }
+
         .product-card:hover .product-overlay {
             opacity: 1;
         }
+
         .btn-view {
             background: white;
             color: var(--primary-dark);
@@ -158,9 +178,11 @@
             cursor: pointer;
             text-decoration: none;
         }
+
         .product-card:hover .btn-view {
             transform: translateY(0);
         }
+
         .btn-view:hover {
             background: var(--primary-color);
             color: white;
@@ -173,6 +195,7 @@
             flex-direction: column;
             flex-grow: 1;
         }
+
         .product-category {
             font-size: 0.8rem;
             text-transform: uppercase;
@@ -180,11 +203,13 @@
             color: var(--accent);
             margin-bottom: 0.5rem;
         }
+
         .product-title {
             font-size: 1.3rem;
             margin-bottom: 1rem;
             color: var(--primary-dark);
         }
+
         .product-desc {
             color: var(--text-light);
             font-size: 0.9rem;
@@ -192,6 +217,7 @@
             line-height: 1.6;
             flex-grow: 1;
         }
+
         .product-size {
             font-weight: 600;
             color: var(--text-main);
@@ -201,16 +227,20 @@
         }
     </style>
 </head>
+
 <body>
     <!-- Navbar -->
-    <header class="navbar" style="overflow: hidden;">
+    <header class="navbar">
         <!-- Video Background for Navbar -->
-        <video autoplay muted loop playsinline style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2;">
+        <video autoplay muted loop playsinline
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2;">
             <source src="assets/vide01.MOV" type="video/mp4">
         </video>
         <!-- Hafif karartma eklendi ki yazılar ve logo tamamen kaybolmasın (isteğe göre silinebilir) -->
-        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.25); z-index: -1;"></div>
-        
+        <div
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.25); z-index: -1;">
+        </div>
+
         <div class="navbar-container">
             <a href="index.html" class="logo"><img src="assets/logo.png" alt="Çilli Natural Logo"></a>
             <nav class="nav-links">
@@ -230,11 +260,12 @@
     </header>
 
     <main>
-        <section class="page-header fade-in-up" style="background-color: var(--bg-light); padding: 500px 0 60px; text-align: center;">
+        <section class="page-header fade-in-up"
+            style="background-color: var(--bg-light); padding: 500px 0 60px; text-align: center;">
             <div class="container">
                 <h1 class="page-title">Koleksiyonumuz</h1>
                 <p class="lead-text">Doğanın saflığını sofralarınıza taşıyan, özenle hazırlanmış ürün portföyümüz.</p>
-                
+
                 <div class="filters-container" id="dynamic-filters">
                     <!-- Kategoriler otomatik olarak JavaScript ile yüklenecek -->
                 </div>
@@ -246,10 +277,15 @@
                 <div class="products-grid" id="dynamic-products">
                     <!-- Ürünler otomatik olarak JavaScript ile yüklenecek -->
                 </div>
-                
-                <div class="text-center" style="text-align: center; margin-top: 4rem; padding-top: 3rem; border-top: 1px solid var(--border-color);">
-                    <h3 style="font-size: 1.8rem; margin-bottom: 1rem; font-family: var(--font-heading);">Toptan Alım ve Kurumsal Siparişler</h3>
-                    <p style="color: var(--text-light); margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">Restoranlar, oteller ve kurumsal hediye çözümleri için özel fiyatlandırmalarımız hakkında detaylı bilgi almak için iletişime geçin.</p>
+
+                <div class="text-center"
+                    style="text-align: center; margin-top: 4rem; padding-top: 3rem; border-top: 1px solid var(--border-color);">
+                    <h3 style="font-size: 1.8rem; margin-bottom: 1rem; font-family: var(--font-heading);">Toptan Alım ve
+                        Kurumsal Siparişler</h3>
+                    <p
+                        style="color: var(--text-light); margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+                        Restoranlar, oteller ve kurumsal hediye çözümleri için özel fiyatlandırmalarımız hakkında
+                        detaylı bilgi almak için iletişime geçin.</p>
                     <a href="iletisim.html" class="btn-primary">İletişime Geçin</a>
                 </div>
             </div>
@@ -278,7 +314,7 @@
 
     <script src="script.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             // === YENİ ÜRÜN EKLEME ALANI ===
             // Yeni bir resim eklediğinizde sadece dosya adını buradaki listeye eklemeniz yeterlidir.
             // Kategori ismi "urun_adi_01_detay.png" formatında ilk kısımdan ("urun_adi") otomatik çıkarılır.
@@ -302,7 +338,7 @@
             function parseFilename(filename) {
                 const base = filename.replace(/\.[^/.]+$/, ""); // Uzantıyı sil
                 const parts = base.split('_'); // Alt tireye göre böl
-                
+
                 // İlk eleman ana kategoridir
                 let mainCategory = parts[0];
                 let subCategories = [];
@@ -331,7 +367,7 @@
 
                 const categoryCode = mainCategory.toLowerCase();
                 const categoryName = formatWord(mainCategory);
-                
+
                 let titleName = categoryName;
                 if (titleParts.length > 0) {
                     titleName += ' - ' + titleParts.map(formatWord).join(' ');
@@ -344,24 +380,24 @@
 
                 const allCodes = [categoryCode, ...subCategoryObjects.map(s => s.code)].join(' ');
 
-                return { 
-                    categoryCode, 
-                    categoryName, 
-                    allCodes, 
+                return {
+                    categoryCode,
+                    categoryName,
+                    allCodes,
                     subCategories: subCategoryObjects,
-                    title: titleName, 
-                    image: 'urunler/' + filename 
+                    title: titleName,
+                    image: 'urunler/' + filename
                 };
             }
 
             const parsedProducts = productFiles.map(parseFilename);
-            
+
             // Ana ve Alt Kategorileri Grupla
             const mainCategories = new Map();
             const subCategoriesByMain = new Map();
-            
+
             parsedProducts.forEach(p => {
-                if(!mainCategories.has(p.categoryCode)) {
+                if (!mainCategories.has(p.categoryCode)) {
                     mainCategories.set(p.categoryCode, p.categoryName);
                     subCategoriesByMain.set(p.categoryCode, new Map());
                 }
@@ -372,7 +408,7 @@
 
             // Filtre Butonlarını Oluştur (Dropdown yapısıyla)
             let filtersHTML = `<button class="filter-btn main-btn active" data-filter="all">Tümü</button>`;
-            
+
             mainCategories.forEach((name, code) => {
                 const subs = subCategoriesByMain.get(code);
                 if (subs && subs.size > 0) {
@@ -437,10 +473,10 @@
                     btn.classList.add('active');
 
                     // Eğer tıklanan alt butonsa, ebeveynini de aktif göster
-                    if(btn.classList.contains('sub-btn')) {
+                    if (btn.classList.contains('sub-btn')) {
                         const parentCode = btn.getAttribute('data-parent');
                         const parentBtn = document.querySelector(`.main-btn[data-filter="${parentCode}"]`);
-                        if(parentBtn) parentBtn.classList.add('active');
+                        if (parentBtn) parentBtn.classList.add('active');
                     }
 
                     const filterCode = btn.getAttribute('data-filter');
@@ -450,4 +486,5 @@
         });
     </script>
 </body>
+
 </html>
